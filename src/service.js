@@ -1,15 +1,15 @@
 // axiosInstance.js
-import axios from 'axios';
+import axios from "axios";
 
-const baseURL = 'https://whale-app-kttx5.ondigitalocean.app/api/v1'; // replace with your API base URL
+const baseURL = "https://budgetserver2-production.up.railway.app/api/v1"; // replace with your API base URL
 
 const Axios = axios.create({
   baseURL,
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json',
-    'ngrok-skip-browser-warning': 'true',
-  
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true",
+
     // You can add other common headers here
   },
 });
@@ -18,10 +18,9 @@ const Axios = axios.create({
 Axios.interceptors.request.use(
   (config) => {
     // Modify the request config here (e.g., add Authorization header)
-    const token = localStorage.getItem('TOKEN'); // Replace with your token retrieval logic
+    const token = localStorage.getItem("TOKEN"); // Replace with your token retrieval logic
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-
     }
     return config;
   },
